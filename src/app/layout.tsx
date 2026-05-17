@@ -5,6 +5,11 @@ import { ProveedoresGlobales } from '@/config/proveedores';
 
 export const metadata = metadataSitio;
 
+/**
+ * Layout raíz de la aplicación.
+ * - Define el idioma (es) y el tema por defecto (dark).
+ * - Envuelve todo con ProveedoresGlobales (tema, futuro auth, etc.).
+ */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className="dark" suppressHydrationWarning>

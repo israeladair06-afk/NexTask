@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BarChart3, BookOpen, LayoutDashboard, Menu, Settings, Ticket, Users, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -10,6 +10,7 @@ import { Boton } from '@/components/ui/boton';
 interface ItemNavegacion {
   nombre: string;
   href: string;
+  /** Descripción que explica qué irá aquí en el futuro */
   descripcion: string;
   icono: React.ReactNode;
   grupo: 'General' | 'Operación' | 'Análisis' | 'Sistema';
@@ -62,18 +63,34 @@ const ITEMS_NAVEGACION: ItemNavegacion[] = [
 
 const GRUPOS: ItemNavegacion['grupo'][] = ['General', 'Operación', 'Análisis', 'Sistema'];
 
-export function Sidebar() {
+interface SidebarProps {
+  /** Controla si el sidebar móvil está abierto (overlay) */
+  abiertoMovil?: boolean;
+  /** Función para cerrar el sidebar móvil */
+  onCerrarMovil?: () => void;
+}
+
+/**
+ * Sidebar profesional del dashboard.
+ * - En desktop: colapsable lateral (lg:flex)
+ * - En móvil: overlay con backdrop (lg:hidden)
+ */
+export function Sidebar({ abiertoMovil = false, onCerrarMovil }: SidebarProps) {
   const [abierto, setAbierto] = useState(true);
   const pathname = usePathname();
 
-  return (
-    <aside
-      className={cn(
-        'fixed inset-y-0 left-0 z-40 hidden shrink-0 border-r bg-card/95 backdrop-blur-xl transition-all duration-300 lg:flex lg:flex-col',
-        abierto ? 'lg:w-72' : 'lg:w-20'
-      )}
-    >
-      <div className="flex h-16 items-center justify-between border-b px-4">
+  // Cerrar sidebar móvil al cambiar de ruta
+  useEffect(() => {
+    if (abiertoMovil && onCerrarMovil) {
+      onCerrarMovil();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
+
+  const sidebarContent = (
+    <>
+      {/* Logo y título */}
+      <div className="flex h-16 shrink-0 items-center justify-between border-b px-4">
         <Link href="/dashboard" className="flex items-center gap-3 overflow-hidden">
           <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary text-sm font-bold text-primary-foreground shadow-sm">
             NT
@@ -91,23 +108,30 @@ export function Sidebar() {
           variante="fantasma"
           tamano="icono"
           onClick={() => setAbierto((valor) => !valor)}
-          aria-label="Colapsar o expandir sidebar"
+          aria-label={abierto ? 'Colapsar sidebar' : 'Expandir sidebar'}
+          className="hidden lg:inline-flex"
         >
           {abierto ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
         </Boton>
       </div>
 
+      {/* Navegación */}
       <nav className="flex-1 space-y-6 overflow-y-auto px-3 py-5">
         {GRUPOS.map((grupo) => {
           const items = ITEMS_NAVEGACION.filter((item) => item.grupo === grupo);
 
           return (
             <div key={grupo} className="space-y-2">
-              {abierto && <p className="px-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">{grupo}</p>}
+              {abierto && (
+                <p className="px-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                  {grupo}
+                </p>
+              )}
 
               <div className="space-y-1">
                 {items.map((item) => {
-                  const activo = pathname === item.href || pathname?.startsWith(`${item.href}/`);
+                  const activo =
+                    pathname === item.href || pathname?.startsWith(`${item.href}/`);
 
                   return (
                     <Link
@@ -122,7 +146,9 @@ export function Sidebar() {
                         !abierto && 'justify-center px-0'
                       )}
                     >
-                      <span className="shrink-0 transition-transform group-hover:scale-105">{item.icono}</span>
+                      <span className="shrink-0 transition-transform group-hover:scale-105">
+                        {item.icono}
+                      </span>
                       {abierto && <span className="truncate">{item.nombre}</span>}
                     </Link>
                   );
@@ -133,6 +159,7 @@ export function Sidebar() {
         })}
       </nav>
 
+      {/* Footer informativo */}
       {abierto && (
         <div className="border-t p-4">
           <div className="rounded-2xl border bg-background/60 p-4">
@@ -143,6 +170,94 @@ export function Sidebar() {
           </div>
         </div>
       )}
-    </aside>
+    </>
+  );
+
+  return (
+    <>
+      {/* Sidebar desktop: colapsable */}
+      <aside
+        className={cn(
+          'fixed inset-y-0 left-0 z-40 hidden shrink-0 border-r bg-card/95 backdrop-blur-xl transition-all duration-300 lg:flex lg:flex-col',
+          abierto ? 'lg:w-72' : 'lg:w-20'
+        )}
+      >
+        {sidebarContent}
+      </aside>
+
+      {/* Sidebar móvil: overlay */}
+      {abiertoMovil && (
+        <div className="fixed inset-0 z-50 lg:hidden">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={onCerrarMovil}
+          />
+
+          {/* Panel lateral móvil */}
+          <aside className="relative flex h-full w-72 flex-col border-r bg-card shadow-2xl">
+            <div className="flex h-16 items-center justify-between border-b px-4">
+              <Link href="/dashboard" className="flex items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-sm font-bold text-primary-foreground shadow-sm">
+                  NT
+                </div>
+                <div>
+                  <p className="text-sm font-semibold">NexTask</p>
+                  <p className="text-xs text-muted-foreground">ITSM Workspace</p>
+                </div>
+              </Link>
+
+              <Boton
+                type="button"
+                variante="fantasma"
+                tamano="icono"
+                onClick={onCerrarMovil}
+                aria-label="Cerrar menú lateral"
+              >
+                <X className="h-5 w-5" />
+              </Boton>
+            </div>
+
+            <nav className="flex-1 space-y-6 overflow-y-auto px-3 py-5">
+              {GRUPOS.map((grupo) => {
+                const items = ITEMS_NAVEGACION.filter((item) => item.grupo === grupo);
+
+                return (
+                  <div key={grupo} className="space-y-2">
+                    <p className="px-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                      {grupo}
+                    </p>
+
+                    <div className="space-y-1">
+                      {items.map((item) => {
+                        const activo =
+                          pathname === item.href || pathname?.startsWith(`${item.href}/`);
+
+                        return (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            onClick={onCerrarMovil}
+                            className={cn(
+                              'flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition-all',
+                              activo
+                                ? 'bg-primary text-primary-foreground shadow-sm'
+                                : 'text-muted-foreground hover:bg-accent hover:text-foreground'
+                            )}
+                          >
+                            <span className="shrink-0">{item.icono}</span>
+                            <span className="truncate">{item.nombre}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })}
+            </nav>
+          </aside>
+        </div>
+      )}
+    </>
   );
 }
