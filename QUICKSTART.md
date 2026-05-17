@@ -1,78 +1,62 @@
-# QUICKSTART — NexTask
+# QUICKSTART - NexTask
 
-Levanta el proyecto en 5 minutos.
+## Requisitos
 
-## 1. Instalación inicial (primera vez)
+- Node.js 18 o superior
+- pnpm
+- Docker y Docker Compose
+- Git
+
+## 1. Instalar dependencias
 
 ```bash
-# Activar pnpm (si aún no lo tienes)
-corepack enable
-corepack prepare pnpm@latest --activate
-
-# Verificar versiones
-node --version      # >= 18
-pnpm --version      # >= 8
-docker --version    # Docker desktop o similiar
-
-# Instalar deps
 pnpm install
+```
 
-# Copiar env
+## 2. Configurar variables
+
+```bash
 cp .env.example .env.local
 ```
 
-## 2. Levanta todo con Docker (recomendado)
+Edita `.env.local` si necesitas cambiar puertos o credenciales.
+
+## 3. Ejecutar sin Docker
 
 ```bash
-docker-compose up --build
-
-# En otra terminal, ver logs:
-docker-compose logs -f frontend
-
-# Frontend: http://localhost:3000
-# PostgreSQL: localhost:5432 (user: postgres, pass: postgres, db: nex_task_dev)
-```
-
-## 3. Desarrollo local (sin Docker)
-
-```bash
-# Solo frontend (requiere PostgreSQL en 5432)
 pnpm dev
-
-# http://localhost:3000
 ```
 
-## 4. Scripts útiles
+Abrir <http://localhost:3000>.
+
+## 4. Ejecutar con Docker
 
 ```bash
-pnpm check         # Validar código (types + lint)
-pnpm lint:fix      # Arreglar lints automáticamente
-pnpm format        # Formatear código
-pnpm docker:down   # Detener Docker
-pnpm docker:clean  # Limpiar volúmenes (reseta BD)
+pnpm docker:up
 ```
 
-## Problemas comunes
+Esto levanta:
 
-**"docker: command not found"**
-→ Instala Docker Desktop o docker-ce
+- `frontend`: Next.js
+- `db`: PostgreSQL
 
-**"pnpm: command not found"**
-→ `corepack enable && corepack prepare pnpm@latest --activate`
+## 5. Detener Docker
 
-**"Port 3000 already in use"**
-→ `lsof -i :3000` y mata el proceso, o cambia `NEXT_PORT=3001` en `.env.local`
+```bash
+pnpm docker:down
+```
 
-**"Port 5432 already in use"**
-→ `lsof -i :5432` o `docker-compose down` y luego `docker ps -a` para verificar
+## 6. Validar el proyecto
 
-**"Permission denied" en scripts**
-→ `chmod +x infra/scripts/*.sh`
+```bash
+pnpm typecheck
+pnpm lint
+pnpm build
+```
 
-## Documentación completa
+## Primeros lugares a revisar
 
-→ Ver `README.md`
-
-## Roadmap
-
-Próximas fases documentadas en `README.md`
+1. `src/app/dashboard/page.tsx`
+2. `src/components/navegacion/sidebar.tsx`
+3. `src/styles/globals.css`
+4. `Documentacion/README.md`

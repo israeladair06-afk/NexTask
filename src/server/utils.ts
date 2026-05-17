@@ -3,7 +3,7 @@
  * This module contains utilities for server-side operations
  */
 
-export async function getServerTimestamp(): Promise<string> {
+export function getServerTimestamp(): string {
   return new Date().toISOString();
 }
 

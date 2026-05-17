@@ -1,135 +1,88 @@
-# NexTask — Entorno profesional
+# NexTask
 
-Plataforma base para IT Service Desk / Ticketing con arquitectura enterprise-grade.
+NexTask es una base profesional para construir un dashboard administrativo tipo **ITSM/helpdesk** con Next.js, React, TypeScript, Tailwind CSS, shadcn/ui style, PostgreSQL y Docker.
 
-**Fase actual:** Infraestructura y tooling. Sin lógica de negocio aún.
+> Estado actual: plantilla enterprise inicial. La UI, arquitectura y documentación están preparadas; la lógica de negocio real se implementará después.
 
-## Requisitos
+## Objetivo
 
-- Node.js >= 18
-- pnpm >= 8
-- Docker + Docker Compose
-- PostgreSQL 15 (en contenedor)
+Dejar un proyecto limpio, escalable y entendible para que un equipo universitario/profesional pueda trabajar sin romper la arquitectura.
 
-## Configuración rápida
+## Stack
+
+- Next.js App Router
+- React
+- TypeScript estricto
+- Tailwind CSS
+- Componentes base estilo shadcn/ui
+- PostgreSQL
+- Docker y Docker Compose
+- Preparado para Prisma, Auth, Redis, WebSockets, RAG y APIs futuras
+
+## Inicio rápido
 
 ```bash
-# 1. Activar corepack (si no tienes pnpm)
-corepack enable
-corepack prepare pnpm@latest --activate
-
-# 2. Instalar dependencias
 pnpm install
-
-# 3. Copiar variables de entorno
 cp .env.example .env.local
-
-# 4. Levantar entorno completo (con Docker)
-docker-compose up --build
-
-# 5. Frontend en http://localhost:3000
-# PostgreSQL en localhost:5432
-```
-
-## Scripts disponibles
-
-```bash
-# Desarrollo
-pnpm dev           # Frontend (hot reload)
-
-# Build y producción
-pnpm build         # Build Next.js
-pnpm start         # Servidor producción
-
-# Calidad de código
-pnpm lint          # ESLint
-pnpm lint:fix      # ESLint + fix
-pnpm format        # Prettier (escritura)
-pnpm format:check  # Prettier (verificación)
-pnpm typecheck     # TypeScript strict
-pnpm check         # Typecheck + lint
-pnpm check:all     # Formato + typecheck + lint
-
-# Docker
-pnpm docker:up     # Levantar contenedores
-pnpm docker:down   # Detener contenedores
-pnpm docker:logs   # Ver logs en vivo
-pnpm docker:clean  # Limpiar volúmenes
-```
-
-## Desarrollo local sin Docker
-
-```bash
-# Solo frontend (requiere PostgreSQL en 5432)
-pnpm install
 pnpm dev
-
-# Frontend disponible en http://localhost:3000
 ```
 
-## Desarrollo con Docker (recomendado)
+Abrir: <http://localhost:3000>
+
+Con Docker:
 
 ```bash
 cp .env.example .env.local
-docker-compose up --build
-
-# Logs en vivo
-docker-compose logs -f frontend
-
-# PostgreSQL accesible desde frontend en db:5432
+pnpm docker:up
 ```
 
-## Estructura del proyecto
+## Scripts principales
 
-```
+| Comando | Descripción |
+| --- | --- |
+| `pnpm dev` | Ejecuta Next.js en desarrollo |
+| `pnpm build` | Compila la aplicación |
+| `pnpm start` | Ejecuta la app compilada |
+| `pnpm typecheck` | Valida TypeScript estricto |
+| `pnpm lint` | Ejecuta lint |
+| `pnpm format` | Formatea el proyecto |
+| `pnpm docker:up` | Levanta app + PostgreSQL |
+| `pnpm docker:down` | Detiene contenedores |
+
+## Estructura principal
+
+```txt
 src/
-├── app/           App Router (rutas)
-├── components/    Componentes React
-├── config/        Configuración centralizada
-├── features/      Módulos por feature
-├── hooks/         Custom React hooks
-├── lib/           Utilidades y adaptadores
-├── server/        Utilidades server-side
-├── services/      Integraciones externas
-├── styles/        Estilos globales
-└── types/         Tipos TypeScript globales
-
-infra/
-├── docker/        Dockerfiles
-└── scripts/       Scripts de infraestructura
-
-docs/             Documentación técnica
-notes/            Notas del proyecto
-tests/            Tests (próximas fases)
+  app/              Rutas y páginas del App Router
+  components/       Componentes reutilizables de UI y navegación
+  features/         Módulos funcionales futuros por dominio
+  services/         Clientes y servicios externos futuros
+  server/           Código del lado servidor
+  hooks/            Hooks reutilizables
+  lib/              Librerías internas e integraciones base
+  utils/            Utilidades puras
+  types/            Tipos globales
+  styles/           Estilos globales y tokens visuales
+  config/           Configuración centralizada
+Documentacion/      Guías del equipo, arquitectura, frontend, backend e infraestructura
+infra/              Docker, scripts y recursos operativos
 ```
 
-## Configuración de tooling
+## Documentación
 
-- **ESLint:** TypeScript + import sorting automático
-- **Prettier:** Formato consistente (100 chars)
-- **TypeScript:** Strict mode activado
-- **Tailwind:** Diseño corporativo (slate/brand colors)
-- **husky + lint-staged:** Git hooks para calidad de commits
+La documentación está en [`Documentacion/`](./Documentacion/README.md):
 
-## Auditoría y actualizaciones
+- Frontend: [`Documentacion/frontend/README.md`](./Documentacion/frontend/README.md)
+- Backend: [`Documentacion/backend/README.md`](./Documentacion/backend/README.md)
+- Infraestructura: [`Documentacion/infraestructura/README.md`](./Documentacion/infraestructura/README.md)
+- Equipo/Git: [`Documentacion/equipo/README.md`](./Documentacion/equipo/README.md)
+- Arquitectura: [`Documentacion/arquitectura/README.md`](./Documentacion/arquitectura/README.md)
 
-Ver `docs/AUDIT.md` para procedimientos de actualización segura de dependencias.
+## Reglas importantes
 
-## Siguientes pasos
-
-Próximas fases (cuando sea apropiado):
-
-1. Prisma + migraciones DB
-2. API routes y health checks
-3. Autenticación base (sesiones)
-4. Roles y permisos
-5. Features modulares (tickets, usuarios, assets)
-6. Testing (Jest + Vitest)
-7. CI/CD pipelines
-
-## Notas
-
-- Diseño: corporativo, sobrio, profesional
-- Base: limpia, modular, escalable
-- Tecnología: moderna y estable
-- Sin mocks innecesarios, sin IA aún, sin lógica de negocio
+1. No agregar lógica compleja directamente en páginas.
+2. Crear módulos nuevos dentro de `src/features/<modulo>`.
+3. Mantener componentes reutilizables en `src/components`.
+4. Mantener acceso a datos e integraciones fuera de la UI.
+5. Documentar decisiones importantes.
+6. Ejecutar `pnpm typecheck` antes de enviar cambios.
