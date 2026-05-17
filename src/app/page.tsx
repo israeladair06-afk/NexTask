@@ -1,4 +1,4 @@
-import { ArrowRight, Boxes, Database, LayoutDashboard, ShieldCheck } from 'lucide-react';
+import { ArrowRight, BookOpen, Boxes, Database, LayoutDashboard, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 import { Tarjeta, TarjetaDescripcion, TarjetaTitulo } from '@/components/ui/tarjeta';
 
@@ -35,9 +35,10 @@ export default function PaginaPrincipal() {
             <Link className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 font-medium text-primary-foreground" href="/dashboard">
               Abrir dashboard <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link className="inline-flex items-center justify-center rounded-xl border px-6 py-3 font-medium hover:bg-accent" href="/Documentacion">
-              Ver documentación local
-            </Link>
+              <Link className="inline-flex items-center justify-center gap-2 rounded-xl border px-6 py-3 font-medium hover:bg-accent" href="/documentacion">
+                <BookOpen className="h-4 w-4" />
+                Ver documentación
+              </Link>
           </div>
         </div>
 
