@@ -31,17 +31,14 @@ Documentacion/
     └── ARQUITECTURA.md             #   Arquitectura detallada del proyecto
 ```
 
----
+> Nota: las imágenes y logos usados en la app se almacenan en `src/images/`.
 
-## 🧭 ¿Por dónde empezar?
-
-| Si quieres... | Ve a... |
 |--------------|---------|
-| 🚀 Levantar el proyecto rápido | [`QUICKSTART.md`](../QUICKSTART.md) |
+| ⚡ **EMPEZAR AHORA** (Docker) | [`QUICKSTART.md`](./QUICKSTART.md) ← **Léeme primero** |
 | 🏗️ Entender la arquitectura | [`base/ARQUITECTURA.md`](./base/ARQUITECTURA.md) |
 | 🎨 Trabajar en el frontend | [`frontend/README.md`](./frontend/README.md) |
 | ⚙️ Trabajar en el backend | [`backend/README.md`](./backend/README.md) |
-| 🐳 Usar Docker | [`infraestructura/DOCKER.md`](./infraestructura/DOCKER.md) |
+| 🐳 Guía detallada de Docker | [`infraestructura/DOCKER.md`](./infraestructura/DOCKER.md) |
 | 👥 Unirte al equipo | [`equipo/CONTRIBUTING.md`](./equipo/CONTRIBUTING.md) |
 
 ---

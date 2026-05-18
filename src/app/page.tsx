@@ -1,6 +1,9 @@
+import Image from 'next/image';
 import { ArrowRight, BookOpen, Boxes, Database, LayoutDashboard, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 import { Tarjeta, TarjetaDescripcion, TarjetaTitulo } from '@/components/ui/tarjeta';
+import LogoNexTask from '@/images/Logo-NexTask.png';
+import NexTaskBanner from '@/images/NexTask.png';
 
 const fortalezas = [
   ['Arquitectura limpia', 'Separación entre app, componentes, features, services, server, hooks, lib, utils y types.', LayoutDashboard],
@@ -15,7 +18,9 @@ export default function PaginaPrincipal() {
       <header className="border-b bg-card/80 backdrop-blur-xl">
         <div className="container-base flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-sm font-bold text-primary-foreground">NT</div>
+            <div className="relative h-9 w-9 overflow-hidden rounded-xl bg-card">
+              <Image src={LogoNexTask} alt="NexTask" fill className="object-contain" />
+            </div>
             <span className="font-semibold">NexTask</span>
           </Link>
           <Link className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-medium text-primary-foreground" href="/dashboard">
@@ -26,6 +31,9 @@ export default function PaginaPrincipal() {
 
       <section className="container-base py-20 sm:py-28">
         <div className="mx-auto max-w-4xl text-center">
+          <div className="mx-auto mb-10 h-20 w-full max-w-[280px]">
+            <Image src={NexTaskBanner} alt="NexTask logo" width={280} height={90} className="object-contain" />
+          </div>
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">ITSM / Helpdesk Enterprise Base</p>
           <h1 className="mt-5 text-4xl font-bold tracking-tight sm:text-6xl">Plantilla profesional para construir NexTask en equipo</h1>
           <p className="mt-6 text-lg leading-8 text-muted-foreground">

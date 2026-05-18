@@ -1,11 +1,13 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { BarChart3, BookOpen, LayoutDashboard, Menu, Settings, Ticket, Users, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/cn';
 import { Boton } from '@/components/ui/boton';
+import LogoNexTask from '@/images/Logo-NexTask.png';
 
 interface ItemNavegacion {
   nombre: string;
@@ -92,8 +94,8 @@ export function Sidebar({ abiertoMovil = false, onCerrarMovil }: SidebarProps) {
       {/* Logo y título */}
       <div className="flex h-16 shrink-0 items-center justify-between border-b px-4">
         <Link href="/dashboard" className="flex items-center gap-3 overflow-hidden">
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary text-sm font-bold text-primary-foreground shadow-sm">
-            NT
+          <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-xl bg-card">
+            <Image src={LogoNexTask} alt="NexTask" fill className="object-contain" />
           </div>
           {abierto && (
             <div className="min-w-0">

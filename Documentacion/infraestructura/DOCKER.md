@@ -1,8 +1,12 @@
 # 🐳 Guía Detallada de Docker
 
+> **¿Primeros pasos?** Ve a [QUICKSTART.md](../QUICKSTART.md) para empezar.
+> 
+> **¿Necesitas profundidad?** Sigue leyendo esta guía.
+
 ## 📋 Descripción
 
-Docker se usa para mantener entornos reproducibles y aislados. Actualmente orquesta dos servicios: la aplicación Next.js y PostgreSQL.
+Docker se usa para mantener entornos reproducibles y aislados. Actualmente orquesta dos servicios: la aplicación Next.js y PostgreSQL. La idea es que **cualquiera pueda clonar el repo, ejecutar `docker-compose up` y todo funcione sin instalar nada más.**
 
 ---
 

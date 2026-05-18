@@ -56,6 +56,7 @@ const DOCUMENTACION: Seccion[] = [
                   ['src/components/navegacion', 'Sidebar, header y layout del dashboard'],
                   ['src/components/ui', 'Componentes base estilo shadcn/ui'],
                   ['src/components/', 'Componentes reutilizables globales'],
+                  ['src/images/', 'Imágenes estáticas, logos y assets de marca'],
                   ['src/features/<modulo>', 'Componentes específicos por módulo'],
                   ['src/hooks/', 'Hooks React personalizados'],
                   ['src/styles/', 'Estilos globales y variables CSS'],
@@ -453,6 +454,94 @@ enum Prioridad { BAJA MEDIA ALTA CRITICA }`}</code>
     icono: <Shield className="h-5 w-5" />,
     descripcion: 'Docker, PostgreSQL y herramientas',
     subsecciones: [
+      {
+        id: 'infra-quickstart',
+        titulo: '⚡ Inicio Rápido (5 min)',
+        contenido: (
+          <div className="space-y-6">
+            <div className="rounded-2xl border-l-4 border-green-500 bg-green-500/5 p-6">
+              <h3 className="text-lg font-semibold text-green-500">🚀 Bienvenido al equipo</h3>
+              <p className="mt-2 text-muted-foreground">
+                Solo necesitas <strong>Docker</strong>. Aquí cómo levantar el proyecto en 5 minutos.
+              </p>
+            </div>
+
+            <div className="rounded-xl border bg-card p-5">
+              <h3 className="text-sm font-semibold mb-3">1️⃣ Requisitos</h3>
+              <div className="space-y-2">
+                <p className="text-xs text-muted-foreground">Solo instalación necesaria:</p>
+                <pre className="overflow-x-auto rounded-lg bg-muted p-3 text-xs">
+                  <code>{`docker --version      # 24.0.0+
+docker-compose --version  # 2.20.0+
+
+📥 Descarga desde: https://docker.com/get-started`}</code>
+                </pre>
+              </div>
+            </div>
+
+            <div className="rounded-xl border bg-card p-5">
+              <h3 className="text-sm font-semibold mb-3">2️⃣ Pasos para empezar</h3>
+              <pre className="overflow-x-auto rounded-lg bg-muted p-3 text-xs leading-relaxed">
+                <code>{`# Paso 1: Clonar repositorio
+git clone <url>
+cd nex-task
+
+# Paso 2: Copiar configuración
+cp .env.example .env.local
+
+# Paso 3: Levantar servicios ☕ (2-3 min)
+docker-compose up --build
+
+# Paso 4: Abrir en navegador
+http://localhost:3000 ✅`}</code>
+              </pre>
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div className="rounded-xl border bg-card p-4">
+                <h4 className="text-sm font-semibold text-primary mb-2">✅ Esperado</h4>
+                <p className="text-xs text-muted-foreground">
+                  Frontend en http://localhost:3000 <br/>
+                  PostgreSQL en localhost:5432
+                </p>
+              </div>
+              <div className="rounded-xl border bg-card p-4">
+                <h4 className="text-sm font-semibold text-yellow-500 mb-2">⚠️ Primera vez</h4>
+                <p className="text-xs text-muted-foreground">
+                  Toma 2-3 minutos descargando imágenes y dependencias
+                </p>
+              </div>
+            </div>
+
+            <div className="rounded-xl border bg-card p-5">
+              <h3 className="text-sm font-semibold mb-3">🐛 Problemas comunes</h3>
+              <div className="space-y-3">
+                {[
+                  ['Puerto 3000 en uso', 'NEXT_PORT=3001 docker-compose up'],
+                  ['Puerto 5432 en uso', 'PG_PORT=5433 docker-compose up'],
+                  ['Docker no abre', 'Abre Docker Desktop o: sudo systemctl start docker'],
+                  ['Dependencias fallan', 'docker-compose down -v && docker-compose up --build'],
+                ].map(([problema, solucion]) => (
+                  <div key={problema} className="rounded-lg border bg-muted/30 p-3">
+                    <p className="text-xs font-semibold text-red-500">{problema}</p>
+                    <code className="text-xs text-muted-foreground mt-1 block">{solucion}</code>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-primary/30 bg-primary/5 p-5">
+              <h3 className="text-sm font-semibold text-primary">📚 Siguientes pasos</h3>
+              <ul className="mt-3 space-y-2 text-xs text-muted-foreground">
+                <li>✅ Ver logs: <code className="text-primary">docker-compose logs -f</code></li>
+                <li>✅ Acceder BD: <code className="text-primary">docker exec -it nex-task-db-1 psql -U postgres</code></li>
+                <li>✅ Prisma Studio: <code className="text-primary">docker exec -it nex-task-frontend-1 pnpm prisma studio</code></li>
+                <li>✅ Leer docs: Ve a <strong>Infraestructura → Guía de Docker</strong></li>
+              </ul>
+            </div>
+          </div>
+        ),
+      },
       {
         id: 'infra-intro',
         titulo: '🐳 Infraestructura',
