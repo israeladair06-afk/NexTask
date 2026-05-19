@@ -1,11 +1,16 @@
 'use client';
 
 import { ProveedorTema } from './tema';
+import { ThemeConfigProvider } from './theme-config';
+import { Toaster } from 'sonner';
 
-/**
- * Proveedor raíz que envuelve toda la aplicación con contextos globales
- * Aquí se agregan: Tema, Autenticación, Toasts, Modales, etc.
- */
 export function ProveedoresGlobales({ children }: { children: React.ReactNode }) {
-  return <ProveedorTema>{children}</ProveedorTema>;
+  return (
+    <ProveedorTema>
+      <ThemeConfigProvider>
+        {children}
+        <Toaster position="top-right" richColors closeButton />
+      </ThemeConfigProvider>
+    </ProveedorTema>
+  );
 }

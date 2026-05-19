@@ -1,19 +1,19 @@
 import '@/styles/globals.css';
-import React from 'react';
-import { metadataSitio } from '@/config/metadata';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import { ProveedoresGlobales } from '@/config/proveedores';
 
-export const metadata = metadataSitio;
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
-/**
- * Layout raíz de la aplicación.
- * - Define el idioma (es) y el tema por defecto (dark).
- * - Envuelve todo con ProveedoresGlobales (tema, futuro auth, etc.).
- */
+export const metadata: Metadata = {
+  title: 'NexTask - WMS Enterprise',
+  description: 'Plataforma profesional de gestión de almacenes (WMS)',
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className="dark" suppressHydrationWarning>
-      <body className="min-h-screen bg-background font-sans text-foreground antialiased">
+    <html lang="es" suppressHydrationWarning>
+      <body className={`${inter.variable} min-h-screen bg-background font-sans text-foreground antialiased`}>
         <ProveedoresGlobales>{children}</ProveedoresGlobales>
       </body>
     </html>
