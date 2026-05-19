@@ -32,8 +32,16 @@ pnpm install
 ### 4. Configurar variables de entorno
 
 ```bash
-cp .env.example .env.local
-# Opcional: editar .env.local si necesitas puertos diferentes
+# Linux / macOS
+cp .env.example .env
+
+# Windows CMD
+copy .env.example .env
+
+# PowerShell
+Copy-Item .env.example .env
+
+# Opcional: editar .env si necesitas puertos diferentes
 ```
 
 ### 5. Iniciar el servidor de desarrollo

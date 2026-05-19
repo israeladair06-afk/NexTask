@@ -112,7 +112,14 @@ CMD ["pnpm", "dev"]
 
 ```bash
 # 1. Configurar variables de entorno
-cp .env.example .env.local
+# Linux / macOS
+cp .env.example .env
+
+# Windows CMD
+copy .env.example .env
+
+# PowerShell
+Copy-Item .env.example .env
 
 # 2. Iniciar servicios
 pnpm docker:up

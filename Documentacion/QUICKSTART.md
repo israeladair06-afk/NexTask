@@ -12,16 +12,25 @@ Solo necesitas tener instalado:
 |-------------|----------------|
 | **Docker** | 24.0.0+ | 
 | **Docker Compose** | 2.20.0+ |
+| **pnpm** | 8.0.0+ |
 
 **¿Cómo verificar?**
 ```bash
 docker --version
 docker-compose --version
+pnpm --version
 ```
 
-**¿No tienes Docker?** Descárgalo desde https://www.docker.com/get-started
+**Si usas Windows y no tienes `pnpm`:**
+```cmd
+npm install -g pnpm@8.6.0
+```
 
----
+> Si tu Node es 18+, también puedes usar Corepack:
+> ```cmd
+> corepack enable
+> corepack prepare pnpm@8.6.0 --activate
+> ```
 
 ## 🎯 Pasos para empezar
 
@@ -35,18 +44,48 @@ cd nex-task
 ### 2️⃣ Copiar el archivo de configuración
 
 ```bash
-cp .env.example .env.local
+# Linux / macOS
+cp .env.example .env
+
+# Windows CMD
+copy .env.example .env
+
+# PowerShell
+Copy-Item .env.example .env
 ```
 
-**¿Qué hace esto?** Copia las variables de entorno necesarias para desarrollo. Puedes dejarlo así tal cual está configurado.
+**¿Qué hace esto?** Copia las variables de entorno necesarias para desarrollo en Docker Compose. Puedes dejarlo así tal cual está configurado.
 
-### 3️⃣ Levantar Docker Compose
+### 3️⃣ Instalar dependencias con pnpm
+
+```bash
+pnpm install
+```
+
+> Si `pnpm` no está instalado en Windows:
+> ```cmd
+> npm install -g pnpm@8.6.0
+> ```
+
+### 4️⃣ Ejecutar localmente con pnpm
+
+```bash
+pnpm dev
+```
+
+**Esto inicia el servidor de desarrollo de Next.js en http://localhost:3000**.
+
+> Si usas Windows, ejecuta el comando en `cmd` o `PowerShell`.
+
+### 5️⃣ Levantar con Docker Compose
+
+Si prefieres usar Docker para frontend + base de datos:
 
 ```bash
 docker-compose up --build
 ```
 
-**Primera vez:** Esto va a tardar 2-3 minutos descargando imágenes y instalando dependencias. ☕
+**Primera vez:** Esto va a tardar 2-3 minutos descargando imágenes y configurando los servicios. ☕
 
 **Esperado:**
 ```
@@ -56,7 +95,7 @@ frontend-1 |
 db-1       | database system is ready to accept connections
 ```
 
-### 4️⃣ Abrir en el navegador
+### 6️⃣ Abrir en el navegador
 
 - **Frontend:** http://localhost:3000
 - **Proyecto está listo** ✅
@@ -64,6 +103,21 @@ db-1       | database system is ready to accept connections
 ---
 
 ## 🛠️ Comandos útiles
+
+### Instalar dependencias
+```bash
+pnpm install
+```
+
+### Ejecutar la app localmente
+```bash
+pnpm dev
+```
+
+> Alternativa equivalente:
+> ```bash
+> pnpm run dev
+> ```
 
 ### Ver logs en tiempo real
 ```bash
@@ -138,8 +192,14 @@ SELECT * FROM usuarios;  -- Cuando haya tablas creadas
 
 **Solución:**
 ```bash
-# Opción 1: Cambiar el puerto
+# Opción 1: Cambiar el puerto (Linux / macOS)
 NEXT_PORT=3001 docker-compose up
+
+# Opción 1: Cambiar el puerto (Windows CMD)
+set NEXT_PORT=3001 && docker-compose up
+
+# Opción 1: Cambiar el puerto (PowerShell)
+$env:NEXT_PORT=3001; docker-compose up
 
 # Opción 2: Matar el proceso usando el puerto
 lsof -i :3000        # Ver qué usa el puerto
@@ -152,7 +212,7 @@ kill -9 <PID>        # Matar el proceso
 
 **Solución:**
 ```bash
-# Cambiar puerto en .env.local
+# Cambiar puerto en .env
 PG_PORT=5433  # Cambiar a otro puerto libre
 
 # O detener PostgreSQL local

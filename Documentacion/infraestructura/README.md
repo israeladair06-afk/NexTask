@@ -60,7 +60,7 @@ La carpeta `infra/` y los archivos de configuración en la raíz contienen todo 
 
 ## 📋 Buenas prácticas
 
-1. ✅ No subir `.env.local` — Solo `.env.example` debe estar versionado
+1. ✅ No subir `.env` ni `.env.local` — Solo `.env.example` debe estar versionado
 2. ✅ Mantener `.env.example` actualizado con todas las variables
 3. ✅ No hardcodear credenciales en ningún archivo
 4. ✅ Documentar servicios nuevos en Docker Compose

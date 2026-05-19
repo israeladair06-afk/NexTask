@@ -96,7 +96,7 @@ refactor: extrae lógica de tickets a servicio independiente
 1. **No crear lógica de negocio dentro de `src/app`** — Las páginas solo deben componer y delegar.
 2. **No duplicar componentes** — Si ya existe un componente similar, reutilizarlo o extenderlo.
 3. **No modificar infraestructura sin actualizar documentación** — Docker, ESLint, etc.
-4. **No subir credenciales** — Usar siempre `.env.local` y mantener `.env.example` actualizado.
+4. **No subir credenciales** — Usar `.env` o `.env.local`, mantener `.env.example` actualizado.
 5. **No mezclar cambios grandes no relacionados** — Un PR = una funcionalidad/corrección.
 6. **No ignorar errores de TypeScript** — `strict: true` es obligatorio.
 7. **No importar código de servidor en componentes cliente** — Usar Server Components o APIs.

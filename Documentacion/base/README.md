@@ -101,7 +101,7 @@
 3. **Validación pre-commit** — `pnpm check` antes de cada commit
 4. **Ramas por feature** — Una rama por tarea, PR para mergear
 5. **Documentación** — Toda decisión importante debe documentarse
-6. **No credenciales** — Usar `.env.local`, mantener `.env.example`
+6. **No credenciales** — Usar `.env` o `.env.local`, mantener `.env.example`
 7. **Responsabilidad única** — Cada archivo hace una cosa
 8. **Componentes en español** — Nombres claros en español
 9. **Sin lógica en páginas** — `src/app` solo compone, no implementa

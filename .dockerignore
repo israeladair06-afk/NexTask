@@ -4,6 +4,7 @@ dist
 coverage
 pnpm-store
 .env.local
+.env
 *.log
 Dockerfile
 infra/docker/
