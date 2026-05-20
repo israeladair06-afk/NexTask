@@ -21,7 +21,7 @@ export function WmsLayout({ children }: { children: React.ReactNode }) {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
-          className="container-base py-6 sm:py-8"
+          className="px-3 sm:px-4 lg:px-6 py-3 sm:py-4 max-w-full"
         >
           {children}
         </motion.div>

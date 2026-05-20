@@ -1,6 +1,7 @@
 'use client';
 
 import { Menu, Moon, Sun, Bell, Search, LogOut } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
 import { Button } from '@/components/ui/boton';
@@ -13,6 +14,11 @@ interface WmsHeaderProps {
 
 export function WmsHeader({ onAbrirMenuMovil }: WmsHeaderProps) {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <header className="sticky top-0 z-30 border-b bg-background/90 backdrop-blur-xl lg:pl-64">
@@ -56,14 +62,16 @@ export function WmsHeader({ onAbrirMenuMovil }: WmsHeaderProps) {
           </Button>
 
           {/* Theme toggle */}
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            aria-label="Cambiar tema"
-          >
-            {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-          </Button>
+          {mounted && (
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              aria-label="Cambiar tema"
+            >
+              {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            </Button>
+          )}
 
           {/* Avatar */}
           <div className="flex items-center gap-2 pl-2 border-l">
