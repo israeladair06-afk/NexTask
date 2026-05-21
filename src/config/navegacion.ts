@@ -13,6 +13,7 @@ import {
   BarChart3,
   Settings,
   ArrowRightLeft,
+  Bot,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
@@ -48,7 +49,7 @@ export const MODULOS_WMS: ItemNavegacion[] = [
     descripcion: 'Recepción de mercancía y validación de ingreso',
     icono: Truck,
     grupo: 'Operaciones',
-    estado: 'preparado',
+    estado: 'activo',
   },
   {
     nombre: 'Picking',
@@ -56,7 +57,7 @@ export const MODULOS_WMS: ItemNavegacion[] = [
     descripcion: 'Preparación de pedidos y consolidación',
     icono: ClipboardList,
     grupo: 'Logística',
-    estado: 'preparado',
+    estado: 'activo',
   },
   {
     nombre: 'Packing',
@@ -64,7 +65,7 @@ export const MODULOS_WMS: ItemNavegacion[] = [
     descripcion: 'Empaque, embalaje y etiquetado de salida',
     icono: Boxes,
     grupo: 'Logística',
-    estado: 'preparado',
+    estado: 'activo',
   },
   {
     nombre: 'Despacho',
@@ -72,7 +73,7 @@ export const MODULOS_WMS: ItemNavegacion[] = [
     descripcion: 'Gestión de salidas y envíos',
     icono: ArrowRightLeft,
     grupo: 'Logística',
-    estado: 'preparado',
+    estado: 'activo',
   },
   {
     nombre: 'Trazabilidad',
@@ -80,7 +81,7 @@ export const MODULOS_WMS: ItemNavegacion[] = [
     descripcion: 'Historial de movimientos y trazabilidad de productos',
     icono: Route,
     grupo: 'Monitoreo',
-    estado: 'preparado',
+    estado: 'activo',
   },
   {
     nombre: 'Acondicionamiento',
@@ -88,7 +89,7 @@ export const MODULOS_WMS: ItemNavegacion[] = [
     descripcion: 'Reempaque, reetiquetado y preparación de productos',
     icono: ScanLine,
     grupo: 'Operaciones',
-    estado: 'preparado',
+    estado: 'activo',
   },
   {
     nombre: 'Etiquetado',
@@ -96,7 +97,7 @@ export const MODULOS_WMS: ItemNavegacion[] = [
     descripcion: 'Generación y gestión de etiquetas y códigos',
     icono: Tags,
     grupo: 'Operaciones',
-    estado: 'preparado',
+    estado: 'activo',
   },
   {
     nombre: 'Mapeo Bodega',
@@ -112,7 +113,7 @@ export const MODULOS_WMS: ItemNavegacion[] = [
     descripcion: 'Alertas operativas, stock crítico y notificaciones',
     icono: AlertTriangle,
     grupo: 'Monitoreo',
-    estado: 'preparado',
+    estado: 'activo',
   },
   {
     nombre: 'Automatización',
@@ -120,7 +121,7 @@ export const MODULOS_WMS: ItemNavegacion[] = [
     descripcion: 'Reglas de negocio, workflows y automatización',
     icono: Cpu,
     grupo: 'Configuración',
-    estado: 'preparado',
+    estado: 'activo',
   },
   {
     nombre: 'Reportes',
@@ -128,7 +129,15 @@ export const MODULOS_WMS: ItemNavegacion[] = [
     descripcion: 'KPIs, métricas y reportes operativos',
     icono: BarChart3,
     grupo: 'Monitoreo',
-    estado: 'preparado',
+    estado: 'activo',
+  },
+  {
+    nombre: 'ALICE - IA',
+    href: '/alice',
+    descripcion: 'Asistente operativo inteligente con IA y RAG',
+    icono: Bot,
+    grupo: 'Monitoreo',
+    estado: 'activo',
   },
   {
     nombre: 'Configuración',
