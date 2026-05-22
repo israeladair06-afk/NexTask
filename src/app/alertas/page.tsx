@@ -4,17 +4,14 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   AlertTriangle, Search, Clock, Bell,
-  AlertCircle, Info, CheckCircle2, ChevronRight,
-  Settings, Cpu, Shield,
+  AlertCircle, Info, CheckCircle2, ChevronRight, Settings, Cpu,
 } from 'lucide-react';
 import { WmsLayout } from '@/components/wms-layout';
 import { ModuleHeader } from '@/components/shared/ModuleHeader';
 import { StatusBadge } from '@/components/shared/StatusBadge';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/boton';
-import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/cn';
@@ -43,8 +40,6 @@ const alertaConfig = {
   advertencia: { label: 'Advertencia', icon: AlertTriangle, color: 'border-amber-500', bg: 'bg-amber-500/5', text: 'text-amber-500', dot: 'bg-amber-500' },
   info: { label: 'Informativo', icon: Info, color: 'border-blue-500', bg: 'bg-blue-500/5', text: 'text-blue-500', dot: 'bg-blue-500' },
 };
-
-const MODULOS_ALERTAS = ['Inventario', 'Monitoreo', 'Mapeo Bodega', 'Picking', 'Recepción', 'Despacho', 'Sistema', 'Usuarios', 'Reportes'];
 
 export default function AlertasPage() {
   const [filtroTipo, setFiltroTipo] = useState<string>('todas');

@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Bot, Send, Sparkles, MessageSquare, BarChart3,
   AlertTriangle, Package, TrendingUp, Clock,
-  Lightbulb, X, ChevronRight, PanelRightOpen,
-  Brain, Database, Zap, User, Download,
+  Lightbulb, ChevronRight, PanelRightOpen,
+  Brain, Database, Zap,
 } from 'lucide-react';
 import { WmsLayout } from '@/components/wms-layout';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';

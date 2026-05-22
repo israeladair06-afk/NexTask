@@ -9,21 +9,23 @@ import {
   Tags,
   Map,
   AlertTriangle,
-  Cpu,
   BarChart3,
   Settings,
   ArrowRightLeft,
   Bot,
+  UserCog,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+import type { RolUsuario } from '@/features/usuarios/AuthContext';
 
 export interface ItemNavegacion {
   nombre: string;
   href: string;
   descripcion: string;
   icono: LucideIcon;
-  grupo: 'Operaciones' | 'Inventario' | 'Logística' | 'Monitoreo' | 'Configuración';
+  grupo: 'Operaciones' | 'Inventario' | 'Logística' | 'Monitoreo' | 'Configuración' | 'Administración';
   estado: 'activo' | 'preparado' | 'proximamente';
+  roles?: RolUsuario[];
 }
 
 export const MODULOS_WMS: ItemNavegacion[] = [
@@ -116,14 +118,6 @@ export const MODULOS_WMS: ItemNavegacion[] = [
     estado: 'activo',
   },
   {
-    nombre: 'Automatización',
-    href: '/automatizacion',
-    descripcion: 'Reglas de negocio, workflows y automatización',
-    icono: Cpu,
-    grupo: 'Configuración',
-    estado: 'activo',
-  },
-  {
     nombre: 'Reportes',
     href: '/reportes',
     descripcion: 'KPIs, métricas y reportes operativos',
@@ -140,6 +134,15 @@ export const MODULOS_WMS: ItemNavegacion[] = [
     estado: 'activo',
   },
   {
+    nombre: 'Panel Admin',
+    href: '/admin',
+    descripcion: 'Administración de usuarios, empleados y departamentos',
+    icono: UserCog,
+    grupo: 'Administración',
+    estado: 'activo',
+    roles: ['admin'],
+  },
+  {
     nombre: 'Configuración',
     href: '/configuracion',
     descripcion: 'Configuración del sistema y parámetros WMS',
@@ -154,5 +157,6 @@ export const GRUPOS_WMS: ItemNavegacion['grupo'][] = [
   'Inventario',
   'Logística',
   'Monitoreo',
+  'Administración',
   'Configuración',
 ];

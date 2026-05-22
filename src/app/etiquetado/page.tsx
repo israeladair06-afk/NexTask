@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import {
-  Tags, Search, Plus, Clock, Printer,
+  Tags, Search, Plus, Printer,
   QrCode, Barcode, Download, Globe, FileText,
 } from 'lucide-react';
 import { WmsLayout } from '@/components/wms-layout';
@@ -11,7 +11,6 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/boton';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
-import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/cn';
 
 /* ───────────────────────────────────────

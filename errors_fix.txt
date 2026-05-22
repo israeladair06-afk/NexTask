@@ -1,0 +1,49 @@
+src/app/despacho/page.tsx(62,7): error TS6133: 'tipoEnvioIcon' is declared but its value is never read.
+src/app/etiquetado/page.tsx(5,23): error TS6133: 'Clock' is declared but its value is never read.
+src/app/etiquetado/page.tsx(14,1): error TS6133: 'Separator' is declared but its value is never read.
+src/app/inventario/page.tsx(7,3): error TS6133: 'ArrowUpDown' is declared but its value is never read.
+src/app/inventario/page.tsx(7,32): error TS6133: 'CircleDot' is declared but its value is never read.
+src/app/inventario/page.tsx(17,1): error TS6133: 'Badge' is declared but its value is never read.
+src/app/inventario/page.tsx(19,1): error TS6192: All imports in import declaration are unused.
+src/app/inventario/page.tsx(68,22): error TS6133: 'setOrdenStock' is declared but its value is never read.
+src/app/packing/page.tsx(6,32): error TS6133: 'Clock' is declared but its value is never read.
+src/app/packing/page.tsx(8,16): error TS6133: 'AlertCircle' is declared but its value is never read.
+src/app/packing/page.tsx(13,1): error TS6133: 'EmptyState' is declared but its value is never read.
+src/app/packing/page.tsx(15,52): error TS6133: 'CardDescription' is declared but its value is never read.
+src/app/packing/page.tsx(19,1): error TS6192: All imports in import declaration are unused.
+src/app/picking/page.tsx(6,40): error TS6133: 'Clock' is declared but its value is never read.
+src/app/picking/page.tsx(7,17): error TS6133: 'AlertCircle' is declared but its value is never read.
+src/app/picking/page.tsx(13,1): error TS6133: 'EmptyState' is declared but its value is never read.
+src/app/picking/page.tsx(15,52): error TS6133: 'CardDescription' is declared but its value is never read.
+src/app/picking/page.tsx(19,1): error TS6192: All imports in import declaration are unused.
+src/app/picking/page.tsx(21,1): error TS6133: 'Separator' is declared but its value is never read.
+src/app/recepcion/page.tsx(8,31): error TS6133: 'ArrowRight' is declared but its value is never read.
+src/app/recepcion/page.tsx(19,16): error TS6133: 'TabsContent' is declared but its value is never read.
+src/app/recepcion/page.tsx(21,1): error TS6133: 'Separator' is declared but its value is never read.
+src/app/reportes/page.tsx(6,14): error TS6133: 'Search' is declared but its value is never read.
+src/app/reportes/page.tsx(6,22): error TS6133: 'Download' is declared but its value is never read.
+src/app/reportes/page.tsx(7,3): error TS6133: 'TrendingDown' is declared but its value is never read.
+src/app/reportes/page.tsx(7,17): error TS6133: 'Package' is declared but its value is never read.
+src/app/reportes/page.tsx(7,26): error TS6133: 'Truck' is declared but its value is never read.
+src/app/reportes/page.tsx(7,48): error TS6133: 'Boxes' is declared but its value is never read.
+src/app/reportes/page.tsx(17,1): error TS6133: 'Button' is declared but its value is never read.
+src/app/reportes/page.tsx(65,7): error TS6133: 'COLORS' is declared but its value is never read.
+src/app/trazabilidad/page.tsx(6,10): error TS6133: 'Search' is declared but its value is never read.
+src/app/trazabilidad/page.tsx(7,9): error TS6133: 'QrCode' is declared but its value is never read.
+src/app/trazabilidad/page.tsx(7,17): error TS6133: 'ArrowRight' is declared but its value is never read.
+src/app/trazabilidad/page.tsx(8,44): error TS6133: 'ScanLine' is declared but its value is never read.
+src/app/trazabilidad/page.tsx(13,1): error TS6133: 'StatusBadge' is declared but its value is never read.
+src/app/trazabilidad/page.tsx(14,1): error TS6133: 'EmptyState' is declared but its value is never read.
+src/app/trazabilidad/page.tsx(16,1): error TS6133: 'Button' is declared but its value is never read.
+src/app/trazabilidad/page.tsx(18,1): error TS6133: 'Input' is declared but its value is never read.
+src/app/trazabilidad/page.tsx(19,1): error TS6192: All imports in import declaration are unused.
+src/components/shared/ColorEditor.tsx(5,19): error TS6133: 'Save' is declared but its value is never read.
+src/components/shared/ColorEditor.tsx(8,1): error TS6133: 'Badge' is declared but its value is never read.
+src/components/shared/ColorEditor.tsx(9,31): error TS6133: 'ColorScheme' is declared but its value is never read.
+src/components/shared/SecurityBadge.tsx(4,10): error TS6133: 'Shield' is declared but its value is never read.
+src/components/shared/SecurityBadge.tsx(4,31): error TS6133: 'ShieldAlert' is declared but its value is never read.
+src/components/ui/dropdown-menu.tsx(6,1): error TS6192: All imports in import declaration are unused.
+src/components/wms-layout.tsx(11,11): error TS6133: 'sidebarWidth' is declared but its value is never read.
+src/components/wms-sidebar.tsx(15,7): error TS6133: 'ROL_ICON_MAP' is declared but its value is never read.
+src/components/wms-sidebar.tsx(29,16): error TS6133: 'usuario' is declared but its value is never read.
+src/config/navegacion.ts(17,3): error TS6133: 'Shield' is declared but its value is never read.

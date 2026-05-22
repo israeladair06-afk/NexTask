@@ -70,6 +70,16 @@
       }
     ],
     "import/no-unresolved": "error",
-    "no-console": "warn"
+    "no-console": "warn",
+    "@typescript-eslint/prefer-nullish-coalescing": "warn",
+    "@typescript-eslint/no-unsafe-assignment": "warn",
+    "@typescript-eslint/no-unsafe-member-access": "warn",
+    "@typescript-eslint/no-unsafe-call": "warn",
+    "@typescript-eslint/prefer-optional-chain": "warn",
+    "@typescript-eslint/no-empty-function": "warn",
+    "@typescript-eslint/prefer-regexp-exec": "warn",
+    "react/no-unescaped-entities": "warn",
+    "no-misleading-character-class": "warn",
+    "@typescript-eslint/no-misused-promises": "warn"
   }
 }

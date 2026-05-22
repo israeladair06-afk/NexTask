@@ -3,21 +3,19 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
-  ScanLine, Search, Plus, Clock, Package,
-  CheckCircle2, AlertCircle, ChevronRight, Tags,
+  ScanLine, Search, Plus, Package,
+  CheckCircle2, ChevronRight, Tags,
   QrCode, Boxes, Recycle, User, Palette,
 } from 'lucide-react';
 import { WmsLayout } from '@/components/wms-layout';
 import { ModuleHeader } from '@/components/shared/ModuleHeader';
 import { StatusBadge } from '@/components/shared/StatusBadge';
-import { EmptyState } from '@/components/shared/EmptyState';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/boton';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/cn';
 
 /* ───────────────────────────────────────
